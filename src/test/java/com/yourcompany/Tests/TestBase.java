@@ -31,8 +31,8 @@ public class TestBase implements SauceOnDemandSessionIdProvider, SauceOnDemandAu
 
     public String seleniumURI = "@ondemand.saucelabs.com:443";
     public String buildTag = System.getenv("BUILD_TAG");
-    public String username = System.getenv("SAUCE_USERNAME");
-    public String accesskey = System.getenv("SAUCE_ACCESS_KEY");
+    public String username = "";
+    public String accesskey = "";
 
     /**
      * Constructs a {@link SauceOnDemandAuthentication} instance using the supplied user name/access key.  To use the authentication
@@ -40,7 +40,7 @@ public class TestBase implements SauceOnDemandSessionIdProvider, SauceOnDemandAu
      */
     public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(username, accesskey);
 
-    /**
+    /** bv
      * ThreadLocal variable which contains the  {@link AndroidDriver} instance which is used to perform browser interactions with.
      */
     private ThreadLocal<AndroidDriver> androidDriver = new ThreadLocal<AndroidDriver>();
@@ -59,8 +59,8 @@ public class TestBase implements SauceOnDemandSessionIdProvider, SauceOnDemandAu
     @DataProvider(name = "hardCodedBrowsers", parallel = true)
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
-                new Object[]{"Android", "Android Emulator", "5.0", "1.5.3", "portrait"},
-                new Object[]{"Android", "Samsung Galaxy S4 Emulator", "4.4", "1.5.3", "portrait"}
+                new Object[]{"Android", "Samsung Galaxy S6 GoogleAPI Emulator", "7.0", "1.8.0", "portrait"}
+               // new Object[]{"Android", "Samsung Galaxy S4 Emulator", "4.4", "1.5.3", "portrait"}
         };
     }
 
@@ -116,7 +116,9 @@ public class TestBase implements SauceOnDemandSessionIdProvider, SauceOnDemandAu
         capabilities.setCapability("appiumVersion", appiumVersion);
         capabilities.setCapability("name", methodName);
 
-        String app = "https://github.com/saucelabs-sample-test-frameworks/GuineaPig-Sample-App/blob/master/android/GuineaPigApp-debug.apk?raw=true";
+       // String app = "https://github.com/saucelabs-sample-test-frameworks/GuineaPig-Sample-App/blob/master/android/GuineaPigApp-debug.apk?raw=true";
+
+        String app = "sauce-storage:GuineaPigApp-debug.apk";
 
         capabilities.setCapability("app", app);
 

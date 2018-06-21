@@ -21,7 +21,7 @@ public class TextInputTest extends TestBase {
      * Runs a simple test verifying if the comment input is functional.
      * @throws InvalidElementStateException
      */
-    @org.testng.annotations.Test(dataProvider = "hardCodedBrowsers")
+   /* @org.testng.annotations.Test(dataProvider = "hardCodedBrowsers")
     public void verifyCommentInputTest(String platformName,
                                        String deviceName,
                                        String platformVersion,
@@ -40,6 +40,6 @@ public class TextInputTest extends TestBase {
         page.submitComment(commentInputText);
 
         Assert.assertTrue(page.getSubmittedCommentText().contains(commentInputText));
-    }
+    }*/
 
 }
